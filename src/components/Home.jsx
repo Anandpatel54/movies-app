@@ -1,4 +1,5 @@
 import SideNav from "./partials/SideNav";
+import TopNav from "./partials/TopNav";
 
 const Home = () => {
   document.title = "SCSDB | Homepage";
@@ -6,7 +7,9 @@ const Home = () => {
     <>
       <SideNav />
 
-      <div className="w-[80%] h-full"></div>
+      <div className="w-[80%] h-full">
+        <TopNav />
+      </div>
     </>
   );
 };
