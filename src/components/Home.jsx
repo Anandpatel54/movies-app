@@ -10,6 +10,7 @@ const Home = () => {
 
   const [wallpaper, setwallpaper] = useState(null);
   const [trending, settrending] = useState(null);
+  const [category, setCategory] = useState("all");
 
   const GetHeaderWallpaper = async () => {
     try {
@@ -25,8 +26,8 @@ const Home = () => {
 
   const GetTrending = async () => {
     try {
-      const { data } = await axios.get(`/trending//all/day`);
-      settrending(data.results)
+      const { data } = await axios.get(`/trending/${category}/day`);
+      settrending(data.results);
     } catch (error) {
       console.log("Error: ", error);
     }
@@ -34,8 +35,8 @@ const Home = () => {
 
   useEffect(() => {
     !wallpaper && GetHeaderWallpaper();
-    !trending && GetTrending();
-  }, []);
+    GetTrending();
+  }, [category]);
 
   return wallpaper && trending ? (
     <>
@@ -44,7 +45,7 @@ const Home = () => {
       <div className="w-[80%] h-full overflow-auto overflow-x-hidden">
         <TopNav />
         <Header data={wallpaper} />
-        <HorizontalCards data={trending} />
+        <HorizontalCards data={trending} func={setCategory} />
       </div>
     </>
   ) : (
