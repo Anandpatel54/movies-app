@@ -4,6 +4,7 @@ import TopNav from "./partials/TopNav";
 import axios from "../utils/axios";
 import Header from "./partials/Header";
 import HorizontalCards from "./partials/HorizontalCards";
+import DropDown from "./partials/DropDown";
 
 const Home = () => {
   document.title = "SCSDB | Homepage";
@@ -45,7 +46,16 @@ const Home = () => {
       <div className="w-[80%] h-full overflow-auto overflow-x-hidden">
         <TopNav />
         <Header data={wallpaper} />
-        <HorizontalCards data={trending} func={setCategory} />
+        <div className="flex justify-between p-5">
+          <h1 className="text-3xl font-semibold text-zinc-400">Trending</h1>
+
+          <DropDown
+            title="Filter"
+            options={["tv", "movie", "all"]}
+            func={(e) => setCategory(e.target.value)}
+          />
+        </div>
+        <HorizontalCards data={trending} />
       </div>
     </>
   ) : (

@@ -1,14 +1,8 @@
 import { Link } from "react-router-dom";
-import DropDown from "./DropDown";
 
 const HorizontalCards = ({ data, title }) => {
   return (
     <div className="w-full h-[40vh] p-5">
-      <div className="mb-5 flex justify-between">
-        <h1 className="text-3xl font-bold text-zinc-400">Trending</h1>
-      <DropDown title="filter" options={["tv", "Movies", "Series"]} />
-      </div>
-
       <div className="w-[100%] h-[40vh] text-white flex overflow-y-hidden">
         {data.map((d, i) => (
           <div key={i} className="min-w-[20%] mr-5 mb-5">
