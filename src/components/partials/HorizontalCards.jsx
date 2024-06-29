@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const HorizontalCards = ({ data, title }) => {
   return (
-    <div className="w-full h-[40vh] p-5">
+    <div className="w-full h-[40vh] p-5 mb-5">
       <div className="w-[100%] h-[40vh] text-white flex overflow-y-hidden">
         {data.map((d, i) => (
           <div key={i} className="min-w-[20%] mr-5 mb-5">
