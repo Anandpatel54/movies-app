@@ -8,7 +8,7 @@ const Cart = ({ data, title }) => {
           <img
             className="h-[45vh] h-[]"
             src={`https://image.tmdb.org/t/p/original/${
-              c.poste_path || c.backdrop_path
+              c.poster_path || c.backdrop_path
             }`}
             alt=""
           />

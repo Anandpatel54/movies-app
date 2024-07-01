@@ -4,12 +4,13 @@ import DropDown from "./partials/DropDown";
 import { useEffect, useState } from "react";
 import axios from "../utils/axios";
 import Cart from "./partials/Cart";
+import Loading from "./Loading";
 
 const Trending = () => {
   const navigate = useNavigate();
   const [category, setcategory] = useState("All");
   const [duration, setduration] = useState("day");
-  const [trending, settrending] = useState(null);
+  const [trending, settrending] = useState([]);
 
   const GetTrending = async () => {
     try {
@@ -18,12 +19,13 @@ const Trending = () => {
     } catch (error) {
       console.log("Error: ", error);
     }
-  };
+  }
+  console.log(trending)
   useEffect(() => {
     GetTrending();
   }, [category, duration]);
 
-  return (
+  return trending ? (
     <div className="w-screen h-screen px-[3%]">
       <div className="w-full flex items-center justify-between">
         <h1 className="text-2xl text-zinc-400">
@@ -48,8 +50,11 @@ const Trending = () => {
           />
         </div>
       </div>
+      <Cart data={trending} title={category} />
     </div>
-  );
+  ):(
+    <Loading />
+  )
 };
 
 export default Trending;
